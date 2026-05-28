@@ -17,6 +17,3 @@ run: all
 clean:
 	rm -f $(OUT)
 
-
-asdasdas
-
