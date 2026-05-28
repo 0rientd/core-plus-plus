@@ -3,12 +3,22 @@
 #include <cstdlib>
 
 int main(int argc, char* argv[]) {
+  const int default_width = 800;
+  const int default_height = 600;
+
+  SDL_Window* window;
+
+  if (argc < 2) {
+    window = SDL_CreateWindow("Core++", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, default_width, default_height, SDL_WINDOW_SHOWN);
+  } else {
+    window = SDL_CreateWindow("Core++", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, std::atoi(argv[1]), std::atoi(argv[2]), SDL_WINDOW_SHOWN);
+  }
+
   if (SDL_Init(SDL_INIT_VIDEO) < 0) {
       std::cerr << "SDL_Init Error: " << SDL_GetError() << std::endl;
       return 1;
   }
 
-  SDL_Window* window = SDL_CreateWindow("Core++", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, std::stoi(argv[1]), std::stoi(argv[2]), SDL_WINDOW_SHOWN);
   if (!window) {
       std::cerr << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
       SDL_Quit();
