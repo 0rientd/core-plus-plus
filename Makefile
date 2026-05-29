@@ -2,11 +2,11 @@ CXX = g++
 
 CXXFLAGS = -Wall -Wextra -std=c++17 `sdl2-config --cflags`
 
-LDFLAGS = `sdl2-config --libs`
+LDFLAGS = `sdl2-config --libs` -lSDL2_ttf
 
 SRC = src/main.cpp
 
-OUT = bin/core++
+OUT = bin/corepp
 
 all:
 	$(CXX) $(CXXFLAGS) $(SRC) -o $(OUT) $(LDFLAGS)
