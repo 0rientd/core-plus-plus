@@ -3,32 +3,18 @@
 #include <iostream>
 #include <cstdlib>
 
-void drawText(SDL_Renderer* renderer, TTF_Font* font, const char* text, int x, int y) {
-  SDL_Color color = {255, 255, 255, 255};
-
-  SDL_Surface* surface = TTF_RenderText_Blended(font, text, color);
-
-  SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
-
-  SDL_Rect dest = { x, y, surface->w, surface->h };
-
-  SDL_FreeSurface(surface);
-
-  SDL_RenderCopy(renderer, texture, NULL, &dest);
-
-  SDL_DestroyTexture(texture);
-}
+#include "ui/text.hpp"
 
 void drawBaseLine(SDL_Renderer* renderer) {
   SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
-  SDL_RenderDrawLine(renderer, 100, 100, 300, 100);
+  SDL_RenderDrawLine(renderer, 50, 80, 150, 80);
 }
 
 void drawUsageLine(SDL_Renderer* renderer) {
   SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
 
-  SDL_RenderDrawLine(renderer, 100, 100, 200, 100);
+  SDL_RenderDrawLine(renderer, 50, 80, 100, 80);
 }
 
 int main(int argc, char* argv[]) {
@@ -102,7 +88,7 @@ int main(int argc, char* argv[]) {
     SDL_SetRenderDrawColor(renderer, 20, 20, 20, 255);
     SDL_RenderClear(renderer);
     
-    drawText(renderer, font, "Disk Usage", 100, 80);
+    ui::drawText(renderer, font, "Disk Usage", 50, 50);
     drawBaseLine(renderer);
     drawUsageLine(renderer);
 

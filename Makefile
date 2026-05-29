@@ -1,10 +1,16 @@
 CXX = g++
 
-CXXFLAGS = -Wall -Wextra -std=c++17 `sdl2-config --cflags`
+CXXFLAGS = -Wall -Wextra -std=c++17 \
+	` sdl2-config --cflags ` \
+	-Iinclude
 
-LDFLAGS = `sdl2-config --libs` -lSDL2_ttf
+LDFLAGS = \
+	` sdl2-config --libs ` \
+	-lSDL2_ttf
 
-SRC = src/main.cpp
+SRC = \
+	src/main.cpp \
+	src/ui/text.cpp
 
 OUT = bin/corepp
 
@@ -16,4 +22,3 @@ run: all
 
 clean:
 	rm -f $(OUT)
-
